@@ -25,11 +25,19 @@ export function usePagination({
     totalItems
   );
 
+  const itemsOnCurrentPage = endIndex - startIndex;
+
+   // Jump to a specific page
+const setPage = (pageNumber: number) => {
+  setCurrentPage(pageNumber);
+};
 
   return {
     currentPage,
     totalPages,
     startIndex,
-    endIndex
+    endIndex,
+    itemsOnCurrentPage,
+    setPage,
   };
 }
