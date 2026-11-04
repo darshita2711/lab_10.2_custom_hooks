@@ -29,12 +29,19 @@ export function usePagination({
 
    // Jump to a specific page
     const setPage = (pageNumber: number) => {
-        setCurrentPage(pageNumber);
+        // prevents going beyond the last page
+        const safePage = Math.max(1, Math.min(pageNumber, totalPages));
+        setCurrentPage(safePage);
     };
 
     // Go to the next page
     const nextPage = () => {
         setPage(currentPage + 1);
+    };
+
+    // Go to the previous page
+    const prevPage = () => {
+    setPage(currentPage - 1);
     };
 
   return {
@@ -45,5 +52,6 @@ export function usePagination({
     itemsOnCurrentPage,
     setPage,
     nextPage,
+    prevPage,
   };
 }
