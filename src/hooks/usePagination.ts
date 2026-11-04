@@ -43,7 +43,8 @@ export function usePagination({
     const prevPage = () => {
     setPage(currentPage - 1);
     };
-
+    const canNextPage = currentPage < totalPages;
+    const canPrevPage = currentPage > 1;
   return {
     currentPage,
     totalPages,
@@ -53,5 +54,7 @@ export function usePagination({
     setPage,
     nextPage,
     prevPage,
+    canNextPage,
+    canPrevPage,
   };
 }

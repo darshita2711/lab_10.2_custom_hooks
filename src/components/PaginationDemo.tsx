@@ -6,7 +6,8 @@ function PaginationDemo() {
     { length: 100 },
     (_, index) => `Item ${index + 1}`
     );
-  const { currentPage, totalPages, startIndex, endIndex, itemsOnCurrentPage, setPage, nextPage, prevPage } = usePagination({
+  const { currentPage, totalPages, startIndex, endIndex, itemsOnCurrentPage, 
+    setPage, nextPage, prevPage, canNextPage, canPrevPage } = usePagination({
     totalItems: items.length,
     itemsPerPage: 10,
     initialPage: 1,
@@ -22,19 +23,19 @@ function PaginationDemo() {
       <p>Items on Current Page: {itemsOnCurrentPage}</p>
 
       <button onClick={() => setPage(15)}>
-        Go to Page 5
+        Go to Page 15
         </button>
 
         <button onClick={() => setPage(0)}>
-        Go to Page 0
+        Go to Page 1
         </button>
 
-        <button onClick={nextPage}>
-        Next
-        </button>
-
-        <button onClick={prevPage}>
+        <button onClick={prevPage} disabled={!canPrevPage}>
         Previous
+        </button>
+
+        <button onClick={nextPage} disabled={!canNextPage}>
+        Next
         </button>
 
         <h3>Items on this page:</h3>
@@ -44,6 +45,19 @@ function PaginationDemo() {
             <li key={item}>{item}</li>
         ))}
         </ul>
+
+        {/* ADD PAGE NUMBERS HERE */}
+    <div>
+      {Array.from({ length: totalPages }, (_, index) => (
+        <button
+          key={index}
+          onClick={() => setPage(index + 1)}
+          disabled={currentPage === index + 1}
+        >
+          {index + 1}
+        </button>
+      ))}
+    </div>
     </div>
 
   );
