@@ -28,9 +28,14 @@ export function usePagination({
   const itemsOnCurrentPage = endIndex - startIndex;
 
    // Jump to a specific page
-const setPage = (pageNumber: number) => {
-  setCurrentPage(pageNumber);
-};
+    const setPage = (pageNumber: number) => {
+        setCurrentPage(pageNumber);
+    };
+
+    // Go to the next page
+    const nextPage = () => {
+        setPage(currentPage + 1);
+    };
 
   return {
     currentPage,
@@ -39,5 +44,6 @@ const setPage = (pageNumber: number) => {
     endIndex,
     itemsOnCurrentPage,
     setPage,
+    nextPage,
   };
 }
