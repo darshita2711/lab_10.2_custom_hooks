@@ -1,14 +1,17 @@
 import { useState } from 'react'
 import './App.css'
+import PaginationDemo from './components/PaginationDemo'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <>
-     <h1>Vite + React</h1>
-    </>
-  )
+     <div>
+      <h1>Custom Hooks Lab</h1>
+
+      <PaginationDemo />
+    </div>
+  );
 }
 
 export default App

@@ -17,8 +17,19 @@ export function usePagination({
   // Store current page
   const [currentPage, setCurrentPage] = useState(initialPage);
 
+   // Calculate starting index
+  const startIndex = (currentPage - 1) * itemsPerPage;
+   // Calculate ending index
+  const endIndex = Math.min(
+    startIndex + itemsPerPage,
+    totalItems
+  );
+
+
   return {
     currentPage,
     totalPages,
+    startIndex,
+    endIndex
   };
 }
