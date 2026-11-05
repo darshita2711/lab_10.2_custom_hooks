@@ -94,3 +94,46 @@
 .pagination-numbers button:disabled {
   cursor: default;
 }
+
+.debounce-card {
+  max-width: 650px;
+  margin: 30px auto;
+  padding: 25px;
+  background: white;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+}
+
+.debounce-card h2 {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.debounce-delay {
+  margin-bottom: 20px;
+}
+
+.debounce-delay input {
+  width: 80px;
+  padding: 7px;
+  margin-left: 8px;
+}
+
+.search-input {
+  width: 90%;
+  padding: 10px;
+  margin-bottom: 15px;
+}
+
+.debounce-card p {
+  margin: 15px 0;
+  color: #333;
+}
+
+.debounce-card h3 {
+  margin-top: 25px;
+}
+
+.debounce-card ul {
+  line-height: 2;
+}
