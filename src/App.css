@@ -1,0 +1,96 @@
+/* Pagination Card */
+.pagination-card {
+  max-width: 650px;
+  margin: 30px auto;
+  padding: 25px;
+  background-color: #ffffff;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+}
+
+/* Heading */
+.pagination-card h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #26354a;
+}
+
+/* Items per page and total items */
+.pagination-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  color: #26354a;
+}
+
+.pagination-info select {
+  margin-left: 8px;
+  padding: 5px;
+  border: none;
+  background-color: white;
+  font-size: 15px;
+}
+
+/* Item list */
+.pagination-list {
+  min-height: 320px;
+  line-height: 2;
+  color: #26354a;
+}
+
+/* Navigation */
+.pagination-navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 25px;
+}
+
+.pagination-navigation button {
+  background-color: transparent;
+  color: #26354a;
+  font-size: 16px;
+}
+
+.pagination-navigation button:disabled {
+  color: #aaa;
+  background-color: transparent;
+  cursor: not-allowed;
+}
+
+/* Showing items message */
+.pagination-summary {
+  text-align: center;
+  margin-top: 25px;
+  color: #26354a;
+}
+
+/* Page numbers */
+.pagination-numbers {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 15px;
+}
+
+.pagination-numbers button {
+  min-width: 32px;
+  padding: 8px;
+  margin: 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f5f5f5;
+  color: #222;
+}
+
+.pagination-numbers button.active-page {
+  background-color: #1683ed;
+  color: white;
+  border-color: #1683ed;
+}
+
+.pagination-numbers button:disabled {
+  cursor: default;
+}
