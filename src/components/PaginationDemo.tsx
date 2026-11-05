@@ -1,7 +1,9 @@
+import { useState } from "react";
 import { usePagination } from "../hooks/usePagination";
 
 function PaginationDemo() {
 
+    const [itemsPerPage, setItemsPerPage] = useState(10);
   const items = Array.from(
     { length: 100 },
     (_, index) => `Item ${index + 1}`
@@ -9,57 +11,76 @@ function PaginationDemo() {
   const { currentPage, totalPages, startIndex, endIndex, itemsOnCurrentPage, 
     setPage, nextPage, prevPage, canNextPage, canPrevPage } = usePagination({
     totalItems: items.length,
-    itemsPerPage: 10,
+    itemsPerPage: itemsPerPage,
     initialPage: 1,
   });
   const currentItems = items.slice(startIndex, endIndex);
   return (
-    <div>
+    <div className="pagination-card">
       <h2>Pagination Demo</h2>
-      <p>Current Page: {currentPage}</p>
-      <p>Total Pages: {totalPages}</p>
-      <p>Start Index: {startIndex}</p>
-      <p>End Index: {endIndex}</p>
-      <p>Items on Current Page: {itemsOnCurrentPage}</p>
 
-      <button onClick={() => setPage(15)}>
-        Go to Page 15
-        </button>
+      {/* Items per page and total items */}
+      <div className="pagination-info">
+        <label>
+          Items per page:
+          <select
+            value={itemsPerPage}
+            onChange={(e) => {
+              setItemsPerPage(Number(e.target.value));
+              setPage(1);
+            }}
+          >
+            <option value={5}>5</option>
+            <option value={10}>10</option>
+            <option value={20}>20</option>
+          </select>
+        </label>
 
-        <button onClick={() => setPage(0)}>
-        Go to Page 1
-        </button>
+        <span>Total Items: {items.length}</span>
+      </div>
 
+      {/* Display current page items */}
+      <ol className="pagination-list">
+        {currentItems.map((item) => (
+          <li key={item}>{item}</li>
+        ))}
+      </ol>
+
+      {/* Previous, current page, and Next */}
+      <div className="pagination-navigation">
         <button onClick={prevPage} disabled={!canPrevPage}>
-        Previous
+          Previous
         </button>
+
+        <span>
+          Page <strong>{currentPage}</strong> of {totalPages}
+        </span>
 
         <button onClick={nextPage} disabled={!canNextPage}>
-        Next
+          Next
         </button>
+      </div>
 
-        <h3>Items on this page:</h3>
+      {/* Display current item range */}
+      <p className="pagination-summary">
+        Showing items {startIndex + 1} - {endIndex}
+        {" "}(Total on this page: {itemsOnCurrentPage})
+      </p>
 
-        <ul>
-        {currentItems.map((item) => (
-            <li key={item}>{item}</li>
+      {/* Page number buttons */}
+      <div className="pagination-numbers">
+        {Array.from({ length: totalPages }, (_, index) => (
+          <button
+            key={index}
+            onClick={() => setPage(index + 1)}
+            disabled={currentPage === index + 1}
+            className={currentPage === index + 1 ? "active-page" : ""}
+          >
+            {index + 1}
+          </button>
         ))}
-        </ul>
-
-        {/* ADD PAGE NUMBERS HERE */}
-    <div>
-      {Array.from({ length: totalPages }, (_, index) => (
-        <button
-          key={index}
-          onClick={() => setPage(index + 1)}
-          disabled={currentPage === index + 1}
-        >
-          {index + 1}
-        </button>
-      ))}
+      </div>
     </div>
-    </div>
-
   );
 }
 
