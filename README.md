@@ -1,32 +1,102 @@
-# React + TypeScript + Vite
+# Custom Hooks Lab
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+## Project Description
 
-Currently, two official plugins are available:
+This project demonstrates how to create and use custom React Hooks with TypeScript.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+It includes two custom hooks:
 
-## React Compiler
+1. **usePagination** – Manages pagination, including current page, total pages, and page navigation.
+2. **useDebounce** – Delays updating a value until the user stops typing for a specified amount of time.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Features
 
-## Expanding the Oxlint configuration
+### 1. Pagination Demo
+- Displays a list of 100 items.
+- Allows users to select 5, 10, or 20 items per page.
+- Provides Previous and Next navigation.
+- Allows users to jump to a specific page.
+- Disables navigation buttons when unavailable.
+- Displays the current page and item range.
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+### 2. Debounce Search Demo
+- Accepts user input.
+- Displays the current input immediately.
+- Displays the debounced value after the selected delay.
+- Allows users to change the debounce delay.
+- Shows simulated search results.
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+## Technologies Used
+
+- React
+- TypeScript
+- JavaScript
+- CSS
+- Vite
+
+## Project Structure
+
+```text
+src/
+├── components/
+│   ├── PaginationDemo.tsx
+│   └── DebounceSearchDemo.tsx
+├── hooks/
+│   ├── usePagination.ts
+│   └── useDebounce.ts
+├── types/
+│   ├── pagination.ts
+│   └── index.ts
+├── App.tsx
+├── App.css
+└── main.tsx
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+## Installation
+
+Clone the repository:
+
+```bash
+git clone YOUR_GITHUB_REPOSITORY_URL
+```
+
+Navigate to the project folder:
+
+```bash
+cd YOUR_PROJECT_FOLDER
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start the development server:
+
+```bash
+npm run dev
+```
+
+## How to Use
+
+Open the application in your browser.
+
+- Use the Pagination Demo to navigate through the list of items.
+- Use the Debounce Search Demo to enter text and observe the delayed value.
+- Change the debounce delay to see how it affects the search behavior.
+
+## Learning Outcomes
+
+Through this project, I practiced:
+
+- Creating reusable custom React Hooks.
+- Managing component state with `useState`.
+- Using `useEffect` for side effects.
+- Cleaning up timers with `clearTimeout`.
+- Working with arrays and pagination.
+- Passing values between components and custom hooks.
+
+## Author
+
+Created as part of the Per Scholas Software Development Training Program.
